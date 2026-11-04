@@ -11,17 +11,32 @@ MAX_PLAUSIBLE_C = 60.0
 
 
 def celsius_to_fahrenheit(celsius: float) -> float:
-    """Convert a temperature from degrees Celsius to degrees Fahrenheit.
+    """
+    Convert a temperature from Celsius to Fahrenheit.
 
-    Args:
-        celsius: Temperature in degrees Celsius.
+    Parameters
+    ----------
+    celsius : float
+        Temperature in degrees Celsius.
 
-    Returns:
+    Returns
+    -------
+    float
         Temperature in degrees Fahrenheit.
 
-    Raises:
-        TypeError: If celsius is not a number.
-        ValueError: If celsius is below absolute zero.
+    Raises
+    ------
+    TypeError
+        If celsius is not a number.
+    ValueError
+        If celsius is below absolute zero.
+
+    Examples
+    --------
+    >>> celsius_to_fahrenheit(0)
+    32.0
+    >>> celsius_to_fahrenheit(25)
+    77.0
     """
     if isinstance(celsius, bool) or not isinstance(celsius, (int, float)):
         raise TypeError("celsius must be a number")
@@ -33,16 +48,33 @@ def celsius_to_fahrenheit(celsius: float) -> float:
 
 
 def summarize_temperatures(temps: list[float]) -> dict[str, float]:
-    """Summarize temperature readings, ignoring missing values.
+    """
+    Summarize temperature readings, ignoring missing values.
 
-    Args:
-        temps: Temperature readings, possibly containing NaN.
+    Parameters
+    ----------
+    temps : list[float]
+        A list of temperature readings. Missing values are
+        represented by NaN.
 
-    Returns:
-        A dictionary with mean, min, max, and n_missing.
+    Returns
+    -------
+    dict[str, float]
+        A dictionary containing the mean, minimum, maximum,
+        and number of missing readings.
 
-    Raises:
-        ValueError: If no valid temperature readings exist.
+    Raises
+    ------
+    ValueError
+        If there are no valid temperature readings.
+
+    Examples
+    --------
+    >>> summarize_temperatures([10.0, 20.0, 30.0])
+    {'mean': 20.0, 'min': 10.0, 'max': 30.0, 'n_missing': 0}
+
+    >>> summarize_temperatures([15.0, float('nan'), 25.0])
+    {'mean': 20.0, 'min': 15.0, 'max': 25.0, 'n_missing': 1}
     """
     valid = [t for t in temps if not math.isnan(t)]
 
