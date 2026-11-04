@@ -1,6 +1,6 @@
 [project]
 name = "weather_xp2247"
-version = "0.1.0"
+version = "0.1.1"
 description = "Weather station utilities"
 readme = "README.md"
 authors = [{ name = "XixiPAN", email = "xp2247@columbia.edu" }]
